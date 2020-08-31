@@ -62,13 +62,13 @@ buildscript {
         classpath "com.android.tools.build:gradle:$gradleVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
-        classpath "com.vanniktech:gradle-android-junit-jacoco-plugin:0.14.0"
+        classpath "com.vanniktech:gradle-android-junit-jacoco-plugin:0.16.0"
     }
 }
 
 plugins {
     id "com.diffplug.gradle.spotless" version "4.3.0"
-    id "jacoco"
+    id "com.vanniktech.android.junit.jacoco"
 }
 
 allprojects {
