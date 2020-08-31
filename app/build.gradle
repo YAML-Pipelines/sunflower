@@ -19,6 +19,28 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: "com.vanniktech.android.junit.jacoco"
+junitJacoco {
+    jacocoVersion = "$jacoco_version" // type String
+    ignoreProjects = ["markdown"] // type String array
+    excludes = [
+            '**/*Test*.*',
+            '**/*Activity.*',
+            '**/*Fragment.*',
+            '**/AutoValue_*.*',
+            '**/*JavascriptBridge.class',
+            '**/R.class',
+            '**/R$*.class',
+            '**/Manifest*.*',
+            'android/**/*.*',
+            '**/BuildConfig.*',
+            '**/*$ViewBinder*.*',
+            '**/*$ViewInjector*.*'
+    ]
+
+    includeNoLocationClasses = true // type boolean
+    includeInstrumentationCoverageInMergedReport = false // type boolean
+}
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -38,6 +60,9 @@ android {
         buildConfigField("String", "UNSPLASH_ACCESS_KEY", "\"" + getUnsplashAccess() + "\"")
     }
     buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
