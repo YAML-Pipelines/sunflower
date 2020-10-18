@@ -7,8 +7,6 @@ pipeline:
   - stage: 'Lint Analysis'
     steps:
      - bat 'gradle --version'
-     - tool 'JDK8'
-     - tool 'gradle-5.4.1-all'
      - bat 'gradlew.bat clean lint'
      - androidLint()
 
